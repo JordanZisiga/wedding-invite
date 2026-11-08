@@ -93,14 +93,10 @@
       --on-dark-rule: rgba(154,172,152,0.08);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    /* No CSS scroll-behavior: smooth — it fights GSAP ScrollTrigger's
+       scroll restoration. Nav links smooth-scroll via JS instead. */
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
       *,
       *::after,
       *::before {
@@ -1619,7 +1615,7 @@ If 10 or more of you are flying through New York on Kenya Airways on the same da
         trigger: heroSection,
         start: 'top top',
         end: 'bottom top',
-        scrub: true,
+        scrub: 0.6, // ease ~0.6s behind the scroll so mouse-wheel steps don't jump
         invalidateOnRefresh: true,
       }
     });
@@ -1643,7 +1639,7 @@ If 10 or more of you are flying through New York on Kenya Airways on the same da
     const navLinks = $$('a[data-to]', nav);
     const sectionEls = navLinks.map(a => document.getElementById(a.dataset.to));
 
-    // Nav click: CSS scroll-behavior handles smooth scroll, JS just updates hash cleanly
+    // Nav click: smooth-scroll to the section and update the hash
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -1683,12 +1679,13 @@ navLinks.forEach(link => {
           else a.removeAttribute('aria-current');
         });
 
-        // Mobile: keep active item centered
-        if (isMobileNav() && activeIndex !== lastAutoScrollIndex) {
-          navLinks[activeIndex]?.scrollIntoView({
-            behavior: 'smooth',
-            inline: 'center',
-            block: 'nearest'
+        // Mobile: keep active item centered. Scroll only the nav itself —
+        // scrollIntoView() can cancel the page's momentum scroll on iOS.
+        const activeLink = navLinks[activeIndex];
+        if (isMobileNav() && activeLink && activeIndex !== lastAutoScrollIndex) {
+          nav.scrollTo({
+            left: activeLink.offsetLeft - (nav.clientWidth - activeLink.offsetWidth) / 2,
+            behavior: 'smooth'
           });
           lastAutoScrollIndex = activeIndex;
         }
