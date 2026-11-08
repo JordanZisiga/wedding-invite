@@ -1381,8 +1381,44 @@
   <!-- RSVP -->
   <section class="dark" id="rsvp">
     <div class="page" style="text-align: center;">
-      <p class="rsvp">Thank you for saying yes.</p>
-      <p class="dim">We can’t wait to see you.</p>
+      <p class="rsvp">RSVP</p>
+      <p class="dim">Please get back to us by May 15, 2026.</p>
+      <form id="rsvpForm" novalidate>
+        <p class="dim">Will you join us?</p>
+        <div class="gap"></div>
+        <div class="rsvp-choices" role="group" aria-label="RSVP choice">
+          <button type="button" id="btnYes" aria-pressed="false">Joyfully Accept</button>
+          <button type="button" id="btnNo" aria-pressed="false">Regretfully Decline</button>
+        </div>
+        <div class="rsvp-fields" id="acceptFields">
+          <div class="rsvp-row">
+            <input type="text" name="name" placeholder="Name(s)" autocomplete="name">
+            <input type="email" name="email" placeholder="Email address" autocomplete="email">
+          </div>
+          <div class="rsvp-row">
+            <input type="text" name="phone" placeholder="Phone number" autocomplete="tel">
+            <input type="text" name="dietary" placeholder="Dietary restrictions or accessibility needs">
+          </div>
+          <select name="accommodation">
+            <option value="">Accommodation preference</option>
+            <option value="own">I’ll arrange my own</option>
+            <option value="help">Need help deciding</option>
+          </select>
+          <select name="shuttle">
+            <option value="">Transportation to Naivasha</option>
+            <option value="need">I need a shuttle to Naivasha</option>
+            <option value="own">I will get there on my own</option>
+            <option value="unsure">I don’t know yet</option>
+          </select>
+        </div>
+        <div class="rsvp-fields" id="declineFields">
+          <div class="rsvp-row">
+            <input type="text" name="declineName" placeholder="Name(s)" autocomplete="name">
+          </div>
+          <input type="text" name="declineMessage" placeholder="Send a message (optional)">
+        </div>
+        <button type="submit" class="rsvp-submit" id="submitBtn">Submit RSVP</button>
+      </form>
     </div>
   </section>
 
@@ -1414,23 +1450,14 @@
   <section class="dark" id="stay">
     <div class="page">
       <h2>Where<br>to Stay</h2>
-
-      <div class="about-photo" style="margin-bottom: 2.5rem;">
-        <img src="https://www.kenya-experience.com/wp-content/uploads/2024/12/crescent-island-walk-zebras.jpg" alt="Zebras near Lake Naivasha" loading="lazy" width="600" height="400">
-      </div>
-
-      <p>There are plenty of places to stay in and around Naivasha. Try to book close to Sanctuary Farm.</p>
-
-      <div class="about-cols" style="margin-top: 2.5rem;">
+      <div class="about-cols">
         <div class="about-col">
-          <p style="font-weight:800; margin-bottom:0.75rem;">In Naivasha</p>
-          <p><em>Airbnbs</em>: There are good options in the area. <a href="https://www.airbnb.com/s/Naivasha--Kenya/homes" target="_blank" rel="noopener">Browse Airbnbs in Naivasha</a>.</p>
-          <p style="margin-top:0.75rem;"><em>Sawela Lodge</em>: A hotel close to Sanctuary Farm. We’ve arranged a 20% discount for our guests. Email <a href="mailto:guestrelations@sawelalodges.com">guestrelations@sawelalodges.com</a> and mention you’re guests of Jordan and Zisiga.</p>
-          <p style="margin-top:0.75rem;"><em>Camping at Sanctuary Farm</em>: There’s room for up to 18 guests on the farm. <a href="mailto:jordanandzisiga@gmail.com">Email us</a> if you’re interested.</p>
+          <p>We’re putting together a list of places to stay in and around Naivasha, including options on Sanctuary Farm and nearby hotels and Airbnbs. Details coming soon.</p>
         </div>
         <div class="about-col">
-          <p style="font-weight:800; margin-bottom:0.75rem;">In Nairobi</p>
-          <p>Airbnbs and hotels both work well. <strong>Karen</strong> is a quieter neighbourhood, closer to nature. <strong>Kilimani</strong> and <strong>Westlands</strong> are more central, with easy access to restaurants and nightlife. For hotels, neighbourhood matters less.</p>
+          <div class="about-photo">
+            <img src="https://www.kenya-experience.com/wp-content/uploads/2024/12/crescent-island-walk-zebras.jpg" alt="Zebras near Lake Naivasha" loading="lazy" width="600" height="400">
+          </div>
         </div>
       </div>
     </div>
@@ -1481,9 +1508,8 @@ If 10 or more of you are flying through New York on Kenya Airways on the same da
           <summary>Extending Your Trip</summary>
           <div class="accordion-body">
             <dl class="faq">
-              <dt>Safari, coast, Kilimanjaro — should I?</dt>
-              <dd>Yes, yes, and yes. Kenya has more kinds of adventure than we could list here. Several groups are already planning safaris, trips to the coast, and other excursions — if you'd like to join one or want a pointer in the right direction, reach out and we'll connect you.<br><br>
-              A note from Zisiga: everyone talks about the big cats, but Kenya has over 1,000 bird species. This is your pitch to go birdwatching — whether it's in Kakamega Forest or somewhere else entirely. There may even be a herpetology tour in the works, if that's your thing.</dd>
+              <dt>Can I add a safari or beach trip?</dt>
+              <dd>Absolutely. Many guests are planning to add a few days before or after the wedding. We can share recommendations for the Masai Mara, Amboseli, or the coast.</dd>
             </dl>
           </div>
         </details>
@@ -1498,8 +1524,8 @@ If 10 or more of you are flying through New York on Kenya Airways on the same da
       <p>We can’t wait to see you.</p>
     </div>
     <div style="text-align: center; font-size: 1rem; color: rgba(27,31,27,0.5);">
-      Last updated June 1st — Updated to include accommodation details.
-      <br>Correction: An earlier version of this website misstated the year the couple met. They met in 2022, not 2023. We thank the friends who brought this to our attention.
+      Last updated May 12th
+      Correction: An earlier version of this website misstated the year the couple met. They met in 2022, not 2023. We thank the friends who brought this to our attention.
     </div>
   </footer>
 
